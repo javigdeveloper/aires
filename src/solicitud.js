@@ -1,78 +1,162 @@
 import React from "react";
 
 function Solicitud() {
-  const servUno = "Reparación";
-  const servDos = "Mantenimiento";
-  const servTres = "Otros Servicios";
-  const servCuatro = "Otros Servicios";
-  const marcaUno = "Marca uno";
-  const marcaDos = "Marca dos";
-  const marcaTres = "Marca tres";
-  const marcaCuatro = "Marca cuatro";
+  // const servUno = "Reparación";
+  // const servDos = "Mantenimiento";
+  // const servTres = "Otros Servicios";
+  // const servCuatro = "Otros Servicios";
+  // const marcaUno = "Marca uno";
+  // const marcaDos = "Marca dos";
+  // const marcaTres = "Marca tres";
+  // const marcaCuatro = "Marca cuatro";
+
+  function post(e) {
+    const form = new FormData(document.getElementById("reserva"));
+
+    fetch("http://localhost:3000/appointments.json", {
+      method: "POST",
+      body: form,
+    });
+    e.preventDefault();
+    console.log(form);
+  }
+
+  function handleClick(e) {
+    e.preventDefault();
+    alert("Su reserva ha sido exitosa");
+    console.log("The link was clicked.");
+  }
 
   return (
     <div className="request">
       <h2>Reserve su visita</h2>
-      <form className="form">
-        <div className="aspect">
-          <h4>Servicio requerido</h4>
-          <div>
-            <label for="sUno">{servUno}</label>
-            <input id="sUno" type="checkbox" />
+      <section className="forms text-center border border-light p-5">
+        <form className="form" onSubmit={post} id="reserva">
+          <div className="form-row mb-4">
+            <div className="col">
+              Nombre:
+              <input
+                type="text"
+                name="first_name"
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="col">
+              Apellido:
+              <input
+                type="text"
+                name="last_name"
+                className="form-control"
+                required
+              />
+            </div>
           </div>
           <div>
-            <label for="sDos">{servDos}</label>
-            <input id="sDos" type="checkbox" />
+            {" "}
+            Telefono: <i class="ri-phone-line"></i>
+            <input
+              type="text"
+              name="phone_number"
+              className="form-control mb-4"
+              required
+            />{" "}
           </div>
           <div>
-            <label for="sTres">{servTres}</label>
-            <input id="sTres" type="checkbox" />
+            {" "}
+            Fecha:{" "}
+            <input
+              type="date"
+              name="appointment_date"
+              className="form-control mb-4"
+              required
+            />{" "}
           </div>
           <div>
-            <label for="sCuatro">{servCuatro}</label>
-            <input id="sCuatro" type="checkbox" />
+            Hora:
+            <input
+              type="time"
+              name="appointment_time"
+              className="form-control"
+              required
+            />
           </div>
-        </div>
+          <div>
+            {" "}
+            Tipo de Servicio:
+            <select id="service_type" name="service_type">
+              <option value="" className="dropdown">
+                {" "}
+              </option>
+              <option
+                value="Mantenimiento"
+                className="dropdown"
+                id="service_type"
+              >
+                {" "}
+                Mantenimiento{" "}
+              </option>
+              <option value="Reparación" className="dropdown">
+                {" "}
+                Reparación
+              </option>
+              <option value="Instalación" className="dropdown">
+                Instalación
+              </option>
+            </select>
+          </div>
+          <div>
+            {" "}
+            Marca de Aire Acondicionado:
+            <select id="ac_brand" name="ac_brand">
+              <option value="" className="dropdown" id="ac_brand">
+                {" "}
+              </option>
+              <option value="Samsung" name="Samsung" className="dropdown">
+                {" "}
+                Samsung{" "}
+              </option>
+              <option value="LG" className="dropdown">
+                LG
+              </option>
+              <option value="Panasonic" className="dropdown">
+                Panasonic
+              </option>
+              <option value="Mabe" className="dropdown">
+                {" "}
+                Mabe
+              </option>
+              <option value="Electrolux" className="dropdown">
+                {" "}
+                Electrolux
+              </option>
+              <option value="Danki" className="dropdown">
+                Danki
+              </option>
+              <option value="Midea" className="dropdown">
+                Midea
+              </option>
+            </select>
+          </div>
 
-        <div className="aspect">
-          <h4>Marca de su equipo</h4>
           <div>
-            <label for="mUno">{marcaUno}</label>
-            <input id="mUno" type="checkbox" />
+            {" "}
+            Cantidad de Aires Acondicionados:{" "}
+            <input
+              type="number"
+              name="ac_qty"
+              className="form-control mb-4"
+              id="ac_qty"
+            />{" "}
           </div>
-          <div>
-            <label for="mDos">{marcaDos}</label>
-            <input id="mDos" type="checkbox" />
-          </div>
-          <div>
-            <label for="mTres">{marcaTres}</label>
-            <input id="mTres" type="checkbox" />
-          </div>
-          <div>
-            <label for="mCuatro">{marcaCuatro}</label>
-            <input id="mCuatro" type="checkbox" />
-          </div>
-        </div>
-
-        <div className="aspect">
-          <label for="cuantos">Cantidad de equipos a reparar</label>
-          <input id="cuantos" type="number" />
-        </div>
-
-        <div className="aspect">
-          <label for="cuando">Fecha deseada</label>
-          <input id="cuando" type="date" />
-        </div>
-
-        <div className="aspect">
-          <label for="hora">Hora deseada</label>
-          <input id="hora" type="time" />
-        </div>
-
-        <button className="btn" type="submit">
-          Hacer Reserva
-        </button>
-      </form>
+          <input
+            onClick={handleClick}
+            type="submit"
+            value="Hacer Reserva"
+            className="btn btn-primary btn-block"
+          />
+        </form>
+      </section>
     </div>
   );
 }
