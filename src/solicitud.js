@@ -18,15 +18,8 @@ function Solicitud() {
       body: form,
     });
     e.preventDefault();
-    console.log(form);
-  }
-
-  function handleClick(e) {
-    e.preventDefault();
     alert("Su reserva ha sido exitosa");
-    console.log("The link was clicked.");
   }
-
   return (
     <div className="request">
       <h2>Reserve su visita</h2>
@@ -54,7 +47,7 @@ function Solicitud() {
           </div>
           <div>
             {" "}
-            Telefono: <i class="ri-phone-line"></i>
+            Telefono: <i className="ri-phone-line"></i>
             <input
               type="text"
               name="phone_number"
@@ -150,7 +143,6 @@ function Solicitud() {
             />{" "}
           </div>
           <input
-            onClick={handleClick}
             type="submit"
             value="Hacer Reserva"
             className="btn btn-primary btn-block"
