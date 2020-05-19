@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: rgb(188, 239, 255);
+  background-color: rgb(43, 117, 151);
 }
 
 .header img {
@@ -94,6 +94,31 @@ label {
   border-radius: 10px;
   height: 300px;
 } */
+.navbar {
+  display: grid; 
+}
+.bg-dark {
+  background-color: #2e7eff !important;
+}
+.company { 
+  color: #e6e9ec; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: 36px; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
+  text-align: center; 
+}
+
+.jumbotron{
+    background-image: url(ac.png);
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+}
+
+.text-muted {
+  color: #47515a!important;
+}
 
 .forms {
   width: 300%;

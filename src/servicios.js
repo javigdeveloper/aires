@@ -3,7 +3,7 @@ import React from "react";
 function Servicios() {
   const servUno = "Reparación";
   const servDos = "Mantenimiento";
-  const servTres = "Otros Servicios";
+  const servTres = "Instalación";
   const servCuatro = "Otros Servicios";
 
   return (
